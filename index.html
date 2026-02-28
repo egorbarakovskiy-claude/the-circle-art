@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Circle — Where Art Meets Ownership</title>
+    <meta name="description" content="A private collective at the intersection of contemporary art and digital ownership. By invitation only.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #FAFAFA;
+            --text: #1A1A1A;
+            --accent: #E85D04;
+            --muted: #6B7280;
+            --red: #DC2626;
+            --border: #E5E5E5;
+            --white: #FFFFFF;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .serif {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        /* ---- NAV ---- */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 24px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(250, 250, 250, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        nav.scrolled {
+            border-bottom-color: var(--border);
+        }
+
+        nav .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            color: var(--text);
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        nav .nav-links a {
+            text-decoration: none;
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        nav .nav-links a:hover {
+            color: var(--text);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 1.5px;
+            background: var(--text);
+            margin: 6px 0;
+            transition: all 0.3s;
+        }
+
+        /* ---- SECTIONS COMMON ---- */
+        section {
+            padding: 120px 48px;
+        }
+
+        .section-label {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 32px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ---- HERO ---- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(40px, 7vw, 80px);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 32px;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .hero .subtitle {
+            font-size: 18px;
+            color: var(--muted);
+            max-width: 480px;
+            margin-bottom: 48px;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: 1.5px solid var(--text);
+            color: var(--text);
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn:hover {
+            background: var(--text);
+            color: var(--bg);
+        }
+
+        .btn-accent {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .btn-accent:hover {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        .hero-footer {
+            position: absolute;
+            bottom: 48px;
+            left: 48px;
+            right: 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .scroll-hint {
+            font-size: 11px;
+            color: var(--muted);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .scroll-hint::before {
+            content: '';
+            display: block;
+            width: 32px;
+            height: 1px;
+            background: var(--muted);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 48px;
+        }
+
+        .stat {
+            text-align: right;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 400;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: var(--muted);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+
+        /* ---- ABOUT / MANIFESTO ---- */
+        .about {
+            border-top: 1px solid var(--border);
+        }
+
+        .manifesto-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .manifesto-text p {
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--muted);
+            margin-bottom: 24px;
+        }
+
+        .manifesto-text p:first-of-type {
+            font-size: 20px;
+            color: var(--text);
+            font-weight: 300;
+        }
+
+        .manifesto-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-style: italic;
+            line-height: 1.4;
+            padding-left: 32px;
+            border-left: 2px solid var(--accent);
+            margin-top: 40px;
+        }
+
+        /* ---- GALLERY ---- */
+        .gallery {
+            border-top: 1px solid var(--border);
+            background: var(--white);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 3 / 4;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-4px);
+        }
+
+        .gallery-item:nth-child(2) {
+            aspect-ratio: 3 / 4;
+            margin-top: 40px;
+        }
+
+        .gallery-item:nth-child(3) {
+            margin-top: 80px;
+        }
+
+        .gallery-item .art-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+        }
+
+        .gallery-item:nth-child(1) .art-placeholder {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #f59e0b 100%);
+        }
+
+        .gallery-item:nth-child(2) .art-placeholder {
+            background: linear-gradient(135deg, #ede9fe 0%, #c4b5fd 50%, #8b5cf6 100%);
+        }
+
+        .gallery-item:nth-child(3) .art-placeholder {
+            background: linear-gradient(135deg, #fce4ec 0%, #f48fb1 50%, #e91e63 100%);
+        }
+
+        .gallery-item:nth-child(4) .art-placeholder {
+            background: linear-gradient(135deg, #e0f2f1 0%, #80cbc4 50%, #009688 100%);
+        }
+
+        .gallery-item:nth-child(5) .art-placeholder {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffb74d 50%, #ff9800 100%);
+        }
+
+        .gallery-item:nth-child(6) .art-placeholder {
+            background: linear-gradient(135deg, #e8eaf6 0%, #7986cb 50%, #3f51b5 100%);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(250, 250, 250, 0.92);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay span {
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .gallery-label {
+            padding: 16px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .gallery-label .artist {
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .gallery-label .work-title {
+            font-size: 12px;
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        /* ---- TOKENOMICS ---- */
+        .tokenomics {
+            border-top: 1px solid var(--border);
+        }
+
+        .token-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-top: 48px;
+        }
+
+        .token-chart {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+        }
+
+        .token-ring {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(
+                var(--accent) 0deg 144deg,
+                #8B5CF6 144deg 234deg,
+                #10B981 234deg 306deg,
+                var(--muted) 306deg 360deg
+            );
+            mask: radial-gradient(circle, transparent 55%, black 56%);
+            -webkit-mask: radial-gradient(circle, transparent 55%, black 56%);
+        }
+
+        .token-center {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .token-center .total {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+        }
+
+        .token-center .total-label {
+            font-size: 11px;
+            color: var(--muted);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .token-breakdown {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .token-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .token-item:last-child {
+            border-bottom: none;
+        }
+
+        .token-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .token-item:nth-child(1) .token-dot { background: var(--accent); }
+        .token-item:nth-child(2) .token-dot { background: #8B5CF6; }
+        .token-item:nth-child(3) .token-dot { background: #10B981; }
+        .token-item:nth-child(4) .token-dot { background: var(--muted); }
+
+        .token-info {
+            flex: 1;
+        }
+
+        .token-info .token-name {
+            font-weight: 500;
+            font-size: 15px;
+            margin-bottom: 2px;
+        }
+
+        .token-info .token-desc {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .token-pct {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+        }
+
+        /* ---- ROADMAP ---- */
+        .roadmap {
+            border-top: 1px solid var(--border);
+            background: var(--white);
+        }
+
+        .timeline {
+            margin-top: 48px;
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 64px;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -44px;
+            top: 6px;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            border: 1.5px solid var(--muted);
+            background: var(--white);
+        }
+
+        .timeline-item.active::before {
+            border-color: var(--accent);
+            background: var(--accent);
+        }
+
+        .timeline-phase {
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .timeline-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .timeline-desc {
+            font-size: 15px;
+            color: var(--muted);
+            max-width: 500px;
+            line-height: 1.7;
+        }
+
+        .timeline-tags {
+            display: flex;
+            gap: 8px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+
+        .timeline-tag {
+            font-size: 11px;
+            padding: 4px 12px;
+            border: 1px solid var(--border);
+            color: var(--muted);
+            letter-spacing: 0.05em;
+        }
+
+        /* ---- COMMUNITY ---- */
+        .community {
+            border-top: 1px solid var(--border);
+        }
+
+        .community-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .community-card {
+            padding: 40px 32px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text);
+            display: block;
+        }
+
+        .community-card:hover {
+            border-color: var(--text);
+            transform: translateY(-2px);
+        }
+
+        .community-card .card-icon {
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 24px;
+            display: block;
+        }
+
+        .community-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 400;
+            margin-bottom: 12px;
+        }
+
+        .community-card p {
+            font-size: 14px;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .community-card .card-arrow {
+            display: inline-block;
+            margin-top: 24px;
+            font-size: 18px;
+            color: var(--accent);
+            transition: transform 0.2s;
+        }
+
+        .community-card:hover .card-arrow {
+            transform: translateX(4px);
+        }
+
+        /* ---- CTA ---- */
+        .cta {
+            border-top: 1px solid var(--border);
+            background: var(--text);
+            color: var(--bg);
+            text-align: center;
+        }
+
+        .cta .section-label {
+            color: rgba(250, 250, 250, 0.4);
+        }
+
+        .cta .section-title {
+            color: var(--bg);
+            max-width: 600px;
+            margin: 0 auto 16px;
+        }
+
+        .cta .cta-subtitle {
+            font-size: 16px;
+            color: rgba(250, 250, 250, 0.5);
+            margin-bottom: 48px;
+            font-weight: 300;
+        }
+
+        .btn-light {
+            border-color: var(--bg);
+            color: var(--bg);
+        }
+
+        .btn-light:hover {
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        /* ---- FOOTER ---- */
+        footer {
+            padding: 32px 48px;
+            background: var(--text);
+            border-top: 1px solid rgba(250, 250, 250, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        footer .footer-copy {
+            font-size: 12px;
+            color: rgba(250, 250, 250, 0.3);
+        }
+
+        footer .footer-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        footer .footer-links a {
+            font-size: 12px;
+            color: rgba(250, 250, 250, 0.4);
+            text-decoration: none;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        footer .footer-links a:hover {
+            color: var(--bg);
+        }
+
+        /* ---- FADE IN ANIMATION ---- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 768px) {
+            section {
+                padding: 80px 24px;
+            }
+
+            nav {
+                padding: 20px 24px;
+            }
+
+            nav .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(250, 250, 250, 0.98);
+                flex-direction: column;
+                padding: 24px;
+                gap: 16px;
+                border-bottom: 1px solid var(--border);
+            }
+
+            nav .nav-links.open {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero-footer {
+                position: static;
+                margin-top: 48px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 32px;
+            }
+
+            .hero-stats {
+                gap: 32px;
+            }
+
+            .stat {
+                text-align: left;
+            }
+
+            .manifesto-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+
+            .gallery-item:nth-child(2),
+            .gallery-item:nth-child(3) {
+                margin-top: 0;
+            }
+
+            .token-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .community-grid {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 16px;
+                padding: 24px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav id="nav">
+        <a href="#" class="logo">The Circle</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#manifesto">Manifesto</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#token">Token</a></li>
+            <li><a href="#roadmap">Roadmap</a></li>
+            <li><a href="#community">Community</a></li>
+        </ul>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <p class="section-label">By invitation only</p>
+                <h1>The art you own.<br>The culture<br>you <em>shape.</em></h1>
+                <p class="subtitle">A private collective of artists, collectors, and visionaries — building the future of cultural ownership on TON.</p>
+                <a href="#community" class="btn">Request Access</a>
+            </div>
+        </div>
+        <div class="hero-footer">
+            <span class="scroll-hint">Scroll to explore</span>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">$1M</div>
+                    <div class="stat-label">Raised</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">47</div>
+                    <div class="stat-label">Members</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">&infin;</div>
+                    <div class="stat-label">Possibilities</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT / MANIFESTO -->
+    <section class="about" id="manifesto">
+        <div class="container">
+            <p class="section-label">001 &mdash; Manifesto</p>
+            <div class="manifesto-grid">
+                <div>
+                    <h2 class="section-title fade-in">Art should belong to those who feel it.</h2>
+                </div>
+                <div class="manifesto-text">
+                    <p class="fade-in">We believe the gallery of the future has no walls. It lives in the hands of those who create, collect, and care — connected by technology, united by taste.</p>
+                    <p class="fade-in">The Circle is not a platform. It's a private collective — a quiet room where artists and patrons meet without intermediaries, where ownership is transparent, and where culture is currency.</p>
+                    <p class="fade-in">We don't sell tokens. We grant access to a world where art and technology speak the same language.</p>
+                    <blockquote class="manifesto-quote fade-in">"Every collection tells a story. Ours is just beginning."</blockquote>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <p class="section-label">002 &mdash; The Collection</p>
+            <h2 class="section-title fade-in">Curated works from our circle.</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item fade-in">
+                    <div class="art-placeholder"></div>
+                    <div class="gallery-overlay"><span>Members Only</span></div>
+                    <div class="gallery-label">
+                        <span class="artist">A. Volkov</span>
+                        <span class="work-title">Untitled #01</span>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <div class="art-placeholder"></div>
+                    <div class="gallery-overlay"><span>Members Only</span></div>
+                    <div class="gallery-label">
+                        <span class="artist">M. Chen</span>
+                        <span class="work-title">Dissolve</span>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <div class="art-placeholder"></div>
+                    <div class="gallery-overlay"><span>Members Only</span></div>
+                    <div class="gallery-label">
+                        <span class="artist">K. Sato</span>
+                        <span class="work-title">Emergence III</span>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <div class="art-placeholder"></div>
+                    <div class="gallery-overlay"><span>Coming Soon</span></div>
+                    <div class="gallery-label">
+                        <span class="artist">L. Moreau</span>
+                        <span class="work-title">Fragment</span>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <div class="art-placeholder"></div>
+                    <div class="gallery-overlay"><span>Coming Soon</span></div>
+                    <div class="gallery-label">
+                        <span class="artist">D. Park</span>
+                        <span class="work-title">Still Life, Digital</span>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <div class="art-placeholder"></div>
+                    <div class="gallery-overlay"><span>Coming Soon</span></div>
+                    <div class="gallery-label">
+                        <span class="artist">R. Costa</span>
+                        <span class="work-title">Threshold</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOKENOMICS -->
+    <section class="tokenomics" id="token">
+        <div class="container">
+            <p class="section-label">003 &mdash; The Token</p>
+            <h2 class="section-title fade-in">Not a currency. A key.</h2>
+            <div class="token-grid">
+                <div class="fade-in">
+                    <div class="token-chart">
+                        <div class="token-ring"></div>
+                        <div class="token-center">
+                            <div class="total">100M</div>
+                            <div class="total-label">Total Supply</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="token-breakdown fade-in">
+                    <div class="token-item">
+                        <div class="token-dot"></div>
+                        <div class="token-info">
+                            <div class="token-name">Community & Collectors</div>
+                            <div class="token-desc">Airdrops, gallery access, voting rights</div>
+                        </div>
+                        <div class="token-pct">40%</div>
+                    </div>
+                    <div class="token-item">
+                        <div class="token-dot"></div>
+                        <div class="token-info">
+                            <div class="token-name">Artists & Creators</div>
+                            <div class="token-desc">Grants, residencies, exhibition rewards</div>
+                        </div>
+                        <div class="token-pct">25%</div>
+                    </div>
+                    <div class="token-item">
+                        <div class="token-dot"></div>
+                        <div class="token-info">
+                            <div class="token-name">Treasury</div>
+                            <div class="token-desc">Acquisitions, partnerships, operations</div>
+                        </div>
+                        <div class="token-pct">20%</div>
+                    </div>
+                    <div class="token-item">
+                        <div class="token-dot"></div>
+                        <div class="token-info">
+                            <div class="token-name">Team & Advisors</div>
+                            <div class="token-desc">2-year vesting, quarterly unlock</div>
+                        </div>
+                        <div class="token-pct">15%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section class="roadmap" id="roadmap">
+        <div class="container">
+            <p class="section-label">004 &mdash; The Path</p>
+            <h2 class="section-title fade-in">Building in silence. Revealing with intent.</h2>
+            <div class="timeline">
+                <div class="timeline-item active fade-in">
+                    <div class="timeline-phase">Phase I &mdash; Genesis</div>
+                    <h3 class="timeline-title">The Founding</h3>
+                    <p class="timeline-desc">Private token launch. First 50 founding members. Seed round closed. Core team assembled.</p>
+                    <div class="timeline-tags">
+                        <span class="timeline-tag">Token Launch</span>
+                        <span class="timeline-tag">$1M Raised</span>
+                        <span class="timeline-tag">Founding Members</span>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-phase">Phase II &mdash; Gallery</div>
+                    <h3 class="timeline-title">The First Exhibition</h3>
+                    <p class="timeline-desc">Token-gated gallery openings. First NFT collection with partnered artists. Physical + digital hybrid events.</p>
+                    <div class="timeline-tags">
+                        <span class="timeline-tag">NFT Collection</span>
+                        <span class="timeline-tag">Gallery Events</span>
+                        <span class="timeline-tag">Artist Onboarding</span>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-phase">Phase III &mdash; Expansion</div>
+                    <h3 class="timeline-title">Beyond the Circle</h3>
+                    <p class="timeline-desc">DEX listing. Cross-gallery partnerships. International artist residency program. Collector marketplace.</p>
+                    <div class="timeline-tags">
+                        <span class="timeline-tag">DEX Listing</span>
+                        <span class="timeline-tag">Partnerships</span>
+                        <span class="timeline-tag">Marketplace</span>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-phase">Phase IV &mdash; DAO</div>
+                    <h3 class="timeline-title">The Collective Decides</h3>
+                    <p class="timeline-desc">Full governance transition. Community-curated exhibitions. Decentralized acquisition fund. The Circle governs itself.</p>
+                    <div class="timeline-tags">
+                        <span class="timeline-tag">Governance</span>
+                        <span class="timeline-tag">DAO Launch</span>
+                        <span class="timeline-tag">Self-Sovereign</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMMUNITY -->
+    <section class="community" id="community">
+        <div class="container">
+            <p class="section-label">005 &mdash; Join</p>
+            <h2 class="section-title fade-in">The Circle is small by design.</h2>
+            <div class="community-grid">
+                <a href="#" class="community-card fade-in">
+                    <span class="card-icon">Telegram</span>
+                    <h3>The Inner Room</h3>
+                    <p>Private discussions, early announcements, and direct access to artists and founders.</p>
+                    <span class="card-arrow">&rarr;</span>
+                </a>
+                <a href="#" class="community-card fade-in">
+                    <span class="card-icon">X / Twitter</span>
+                    <h3>Public Signal</h3>
+                    <p>Follow for curated thoughts on art, ownership, and the future of cultural capital.</p>
+                    <span class="card-arrow">&rarr;</span>
+                </a>
+                <a href="#" class="community-card fade-in">
+                    <span class="card-icon">Application</span>
+                    <h3>Apply for Membership</h3>
+                    <p>Tell us who you are, what you collect, and why the intersection of art and technology matters to you.</p>
+                    <span class="card-arrow">&rarr;</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="container">
+            <p class="section-label">006 &mdash; Begin</p>
+            <h2 class="section-title fade-in serif">Every great collection<br>starts with a single piece.</h2>
+            <p class="cta-subtitle fade-in">Membership is limited. The door is open — for now.</p>
+            <a href="#" class="btn btn-light fade-in">Request an Invitation</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <span class="footer-copy">&copy; 2026 The Circle. All rights reserved.</span>
+        <ul class="footer-links">
+            <li><a href="#">Telegram</a></li>
+            <li><a href="#">X</a></li>
+            <li><a href="#">Tonkeeper</a></li>
+        </ul>
+    </footer>
+
+    <script>
+        // Scroll animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Nav scroll effect
+        window.addEventListener('scroll', () => {
+            document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Mobile menu
+        document.getElementById('menuToggle').addEventListener('click', () => {
+            document.getElementById('navLinks').classList.toggle('open');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('open');
+            });
+        });
+    </script>
+
+</body>
+</html>
