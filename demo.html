@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KAŞ BOWL — Açaí & Smoothie Bowls in Kaş</title>
+    <meta name="description" content="Fresh açaí and smoothie bowls on the Mediterranean coast. Pay with crypto, earn rewards. Kaş, Antalya.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #FFF9F5;
+            --white: #FFFFFF;
+            --text: #2D2A26;
+            --accent: #6B2FA0;
+            --accent-light: #F3EAFA;
+            --pink: #E8457C;
+            --green: #2D9F6F;
+            --orange: #E8820C;
+            --sand: #F5EDDF;
+            --muted: #8C8680;
+            --border: #EDE8E2;
+            --berry: linear-gradient(135deg, #6B2FA0 0%, #E8457C 100%);
+            --tropical: linear-gradient(135deg, #E8820C 0%, #EDCE3D 100%);
+            --ocean: linear-gradient(135deg, #0EA5E9 0%, #2DD4BF 100%);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .serif {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        /* ---- NAV ---- */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 16px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 249, 245, 0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        nav.scrolled {
+            border-bottom-color: var(--border);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 18px;
+            letter-spacing: 0.06em;
+            text-decoration: none;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--berry);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--muted);
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        .nav-cta {
+            padding: 10px 24px;
+            background: var(--accent);
+            color: white !important;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .nav-cta:hover {
+            opacity: 0.9;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--text);
+            margin: 5px 0;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        /* ---- COMMON ---- */
+        section {
+            padding: 100px 32px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-tag {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            background: var(--accent-light);
+            padding: 6px 16px;
+            border-radius: 100px;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            font-size: 17px;
+            color: var(--muted);
+            max-width: 520px;
+            font-weight: 400;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 24px rgba(107, 47, 160, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text);
+            border: 1.5px solid var(--border);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--text);
+        }
+
+        /* ---- HERO ---- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--green);
+            background: rgba(45, 159, 111, 0.1);
+            padding: 8px 16px;
+            border-radius: 100px;
+            margin-bottom: 24px;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--green);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 400;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            background: var(--berry);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-size: 17px;
+            color: var(--muted);
+            margin-bottom: 32px;
+            max-width: 420px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .bowl-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: 0 4px 40px rgba(0,0,0,0.06);
+            position: relative;
+        }
+
+        .bowl-image {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .bowl-gradient {
+            width: 100%;
+            height: 100%;
+            border-radius: 16px;
+            position: relative;
+        }
+
+        .bowl-gradient.berry {
+            background: radial-gradient(circle at 30% 40%, #E8457C 0%, #6B2FA0 40%, #3D1566 100%);
+        }
+
+        .bowl-emoji {
+            position: absolute;
+            font-size: 64px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .bowl-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 16px;
+        }
+
+        .bowl-name {
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .bowl-price-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 4px;
+        }
+
+        .bowl-price {
+            font-size: 14px;
+            color: var(--muted);
+        }
+
+        .bowl-token-price {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent);
+            background: var(--accent-light);
+            padding: 3px 10px;
+            border-radius: 100px;
+        }
+
+        .hero-float {
+            position: absolute;
+            background: var(--white);
+            border-radius: 16px;
+            padding: 14px 18px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            font-size: 13px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .hero-float.top-right {
+            top: -10px;
+            right: -20px;
+            animation-delay: 0s;
+        }
+
+        .hero-float.bottom-left {
+            bottom: 30px;
+            left: -30px;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .float-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .float-icon.green { background: rgba(45, 159, 111, 0.12); }
+        .float-icon.orange { background: rgba(232, 130, 12, 0.12); }
+
+        /* ---- LOCATION ---- */
+        .location {
+            background: var(--white);
+            border-radius: 0;
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .location-map {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            border-radius: 20px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0EA5E9 0%, #2DD4BF 40%, #86EFAC 100%);
+            position: relative;
+        }
+
+        .map-pin {
+            position: absolute;
+            top: 45%;
+            left: 55%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .map-pin-dot {
+            width: 16px;
+            height: 16px;
+            background: var(--pink);
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(232, 69, 124, 0.4);
+            margin: 0 auto 8px;
+            position: relative;
+        }
+
+        .map-pin-dot::after {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            border-radius: 50%;
+            border: 2px solid rgba(232, 69, 124, 0.3);
+            animation: ping 2s infinite;
+        }
+
+        @keyframes ping {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+
+        .map-pin-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: white;
+            background: var(--pink);
+            padding: 4px 12px;
+            border-radius: 100px;
+            white-space: nowrap;
+        }
+
+        .location-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 32px;
+        }
+
+        .loc-stat {
+            padding: 20px;
+            background: var(--bg);
+            border-radius: 16px;
+        }
+
+        .loc-stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            margin-bottom: 4px;
+        }
+
+        .loc-stat-label {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        /* ---- MENU ---- */
+        .menu {
+            /* default bg */
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .menu-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: default;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+        }
+
+        .menu-card-image {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            position: relative;
+        }
+
+        .menu-card-image .gradient-bg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .menu-card-image .menu-emoji {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 48px;
+        }
+
+        .menu-card-tag {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 4px 12px;
+            border-radius: 100px;
+            color: white;
+        }
+
+        .tag-popular { background: var(--pink); }
+        .tag-new { background: var(--green); }
+        .tag-seasonal { background: var(--orange); }
+
+        .menu-card-body {
+            padding: 20px;
+        }
+
+        .menu-card-body h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .menu-card-body .ingredients {
+            font-size: 13px;
+            color: var(--muted);
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price-fiat {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .price-token {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent);
+            background: var(--accent-light);
+            padding: 4px 12px;
+            border-radius: 100px;
+        }
+
+        /* ---- HOW TOKEN WORKS ---- */
+        .token-flow {
+            background: var(--white);
+        }
+
+        .flow-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .flow-step {
+            text-align: center;
+            padding: 32px 20px;
+            position: relative;
+        }
+
+        .flow-step::after {
+            content: '→';
+            position: absolute;
+            right: -16px;
+            top: 50px;
+            font-size: 20px;
+            color: var(--border);
+        }
+
+        .flow-step:last-child::after {
+            display: none;
+        }
+
+        .flow-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 28px;
+        }
+
+        .flow-icon.purple { background: var(--accent-light); }
+        .flow-icon.pink { background: rgba(232, 69, 124, 0.1); }
+        .flow-icon.green-bg { background: rgba(45, 159, 111, 0.1); }
+        .flow-icon.orange-bg { background: rgba(232, 130, 12, 0.1); }
+
+        .flow-step h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .flow-step p {
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        .flow-number {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 12px;
+            letter-spacing: 0.05em;
+        }
+
+        /* ---- ECONOMICS ---- */
+        .economics {
+            /* default bg */
+        }
+
+        .econ-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .econ-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 32px;
+        }
+
+        .econ-card h3 {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        .econ-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .econ-row:last-child {
+            border-bottom: none;
+        }
+
+        .econ-label {
+            font-size: 14px;
+        }
+
+        .econ-value {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .econ-value.green { color: var(--green); }
+        .econ-value.accent { color: var(--accent); }
+
+        .econ-highlight {
+            background: var(--accent);
+            color: white;
+            border-radius: 20px;
+            padding: 32px;
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            text-align: center;
+        }
+
+        .econ-highlight-item .big-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 400;
+        }
+
+        .econ-highlight-item .label {
+            font-size: 13px;
+            opacity: 0.7;
+            margin-top: 4px;
+        }
+
+        /* ---- CTA ---- */
+        .cta {
+            text-align: center;
+            padding-bottom: 60px;
+        }
+
+        .cta-card {
+            background: var(--text);
+            color: var(--bg);
+            border-radius: 24px;
+            padding: 64px 40px;
+        }
+
+        .cta-card .section-tag {
+            background: rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.7);
+        }
+
+        .cta-card .section-title {
+            color: var(--bg);
+            margin: 0 auto 12px;
+        }
+
+        .cta-card .section-subtitle {
+            color: rgba(255,255,255,0.5);
+            margin: 0 auto 32px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--text);
+        }
+
+        .btn-white:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 24px rgba(255,255,255,0.2);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: white;
+            border: 1.5px solid rgba(255,255,255,0.2);
+        }
+
+        .btn-ghost:hover {
+            border-color: rgba(255,255,255,0.5);
+        }
+
+        /* ---- FOOTER ---- */
+        footer {
+            padding: 24px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        footer a {
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: var(--text);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        /* ---- BACK LINK ---- */
+        .back-link {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 99;
+            padding: 12px 20px;
+            background: var(--white);
+            border-radius: 100px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: transform 0.2s;
+        }
+
+        .back-link:hover {
+            transform: translateY(-2px);
+        }
+
+        /* ---- FADE IN ---- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 768px) {
+            section {
+                padding: 72px 20px;
+            }
+
+            nav {
+                padding: 14px 20px;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(255, 249, 245, 0.98);
+                flex-direction: column;
+                padding: 20px;
+                gap: 12px;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-visual {
+                order: -1;
+            }
+
+            .hero-float {
+                display: none;
+            }
+
+            .location-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .flow-steps {
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+
+            .flow-step::after {
+                display: none;
+            }
+
+            .econ-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .econ-highlight {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .location-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav id="nav">
+        <a href="#" class="logo">
+            <span class="logo-dot"></span>
+            KAŞ BOWL
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#location">Location</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#token">How It Works</a></li>
+            <li><a href="#economics">Economics</a></li>
+            <li><a href="#join" class="nav-cta">Get Tokens</a></li>
+        </ul>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div>
+                    <div class="hero-badge">Now open in Kaş, Antalya</div>
+                    <h1>Fresh bowls.<br>Crypto <em>rewards.</em><br>Mediterranean vibes.</h1>
+                    <p class="subtitle">Açaí and smoothie bowls made with local Turkish fruits. Pay with our token, earn loyalty rewards, own a piece of the brand.</p>
+                    <div class="hero-buttons">
+                        <a href="#menu" class="btn btn-primary">View Menu</a>
+                        <a href="#token" class="btn btn-outline">How Tokens Work</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="bowl-card">
+                        <div class="bowl-image">
+                            <div class="bowl-gradient berry">
+                                <div class="bowl-emoji">🫐</div>
+                            </div>
+                        </div>
+                        <div class="bowl-info">
+                            <div>
+                                <div class="bowl-name">Aegean Berry Bowl</div>
+                                <div class="bowl-price-row">
+                                    <span class="bowl-price">₺320 / $9</span>
+                                    <span class="bowl-token-price">⬡ 45 tokens</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-float top-right">
+                        <div class="float-icon green">✓</div>
+                        <div>
+                            <div style="font-weight:600;font-size:13px">Token Payment</div>
+                            <div style="font-size:11px;color:var(--muted)">Instant via Tonkeeper</div>
+                        </div>
+                    </div>
+                    <div class="hero-float bottom-left">
+                        <div class="float-icon orange">🎁</div>
+                        <div>
+                            <div style="font-weight:600;font-size:13px">5th Bowl Free</div>
+                            <div style="font-size:11px;color:var(--muted)">Loyalty rewards</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATION -->
+    <section class="location" id="location">
+        <div class="container">
+            <div class="location-grid">
+                <div>
+                    <span class="section-tag">Location</span>
+                    <h2 class="section-title fade-in">On the coast of <em class="serif" style="font-style:italic">Kaş</em></h2>
+                    <p class="section-subtitle fade-in">A tiny açaí corner on the Mediterranean. Walk-up window near the marina, open April through October. Made fresh, served fast.</p>
+                    <div class="location-stats fade-in">
+                        <div class="loc-stat">
+                            <div class="loc-stat-number">500K+</div>
+                            <div class="loc-stat-label">Tourists per year</div>
+                        </div>
+                        <div class="loc-stat">
+                            <div class="loc-stat-number">0</div>
+                            <div class="loc-stat-label">Açaí competitors</div>
+                        </div>
+                        <div class="loc-stat">
+                            <div class="loc-stat-number">35°C</div>
+                            <div class="loc-stat-label">Avg summer temp</div>
+                        </div>
+                        <div class="loc-stat">
+                            <div class="loc-stat-number">7 mo</div>
+                            <div class="loc-stat-label">Tourist season</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="location-map fade-in">
+                    <div class="map-pin">
+                        <div class="map-pin-dot"></div>
+                        <span class="map-pin-label">KAŞ BOWL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENU -->
+    <section class="menu" id="menu">
+        <div class="container">
+            <span class="section-tag">Menu</span>
+            <h2 class="section-title fade-in">Turkish fruits. Brazilian soul.</h2>
+            <p class="section-subtitle fade-in">Every bowl is made with seasonal fruits from local farms. Pay in lira, dollars, or tokens.</p>
+            <div class="menu-grid">
+                <div class="menu-card fade-in">
+                    <div class="menu-card-image">
+                        <div class="gradient-bg" style="background: radial-gradient(circle at 30% 40%, #E8457C 0%, #6B2FA0 40%, #3D1566 100%)"></div>
+                        <span class="menu-emoji">🫐</span>
+                        <span class="menu-card-tag tag-popular">Popular</span>
+                    </div>
+                    <div class="menu-card-body">
+                        <h3>Aegean Berry</h3>
+                        <p class="ingredients">Açaí, blueberry, banana, local honey, granola, coconut flakes</p>
+                        <div class="price-row">
+                            <span class="price-fiat">₺320</span>
+                            <span class="price-token">⬡ 45 tokens</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-card fade-in">
+                    <div class="menu-card-image">
+                        <div class="gradient-bg" style="background: radial-gradient(circle at 40% 50%, #EDCE3D 0%, #E8820C 50%, #B85A00 100%)"></div>
+                        <span class="menu-emoji">🥭</span>
+                        <span class="menu-card-tag tag-new">New</span>
+                    </div>
+                    <div class="menu-card-body">
+                        <h3>Antalya Tropical</h3>
+                        <p class="ingredients">Mango, passion fruit, Turkish fig, pomegranate seeds, chia</p>
+                        <div class="price-row">
+                            <span class="price-fiat">₺350</span>
+                            <span class="price-token">⬡ 50 tokens</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-card fade-in">
+                    <div class="menu-card-image">
+                        <div class="gradient-bg" style="background: radial-gradient(circle at 50% 40%, #86EFAC 0%, #2D9F6F 50%, #166534 100%)"></div>
+                        <span class="menu-emoji">🥑</span>
+                        <span class="menu-card-tag tag-seasonal">Seasonal</span>
+                    </div>
+                    <div class="menu-card-body">
+                        <h3>Green Mediterranean</h3>
+                        <p class="ingredients">Avocado, spinach, kiwi, mint, lime, pistachio crumble</p>
+                        <div class="price-row">
+                            <span class="price-fiat">₺380</span>
+                            <span class="price-token">⬡ 55 tokens</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW TOKEN WORKS -->
+    <section class="token-flow" id="token">
+        <div class="container">
+            <div style="text-align:center">
+                <span class="section-tag">Token Integration</span>
+                <h2 class="section-title fade-in" style="max-width:500px;margin:0 auto 8px">Pay, earn, own — <br>in four simple steps.</h2>
+                <p class="section-subtitle fade-in" style="margin:0 auto">No crypto knowledge needed. Just scan and go.</p>
+            </div>
+            <div class="flow-steps">
+                <div class="flow-step fade-in">
+                    <div class="flow-number">01</div>
+                    <div class="flow-icon purple">📱</div>
+                    <h3>Scan QR</h3>
+                    <p>Scan the QR at the counter. Opens Tonkeeper wallet — takes 30 seconds to set up.</p>
+                </div>
+                <div class="flow-step fade-in">
+                    <div class="flow-number">02</div>
+                    <div class="flow-icon pink">🪙</div>
+                    <h3>Get Tokens</h3>
+                    <p>First-time visitors get 10 free tokens as a welcome bonus. Enough for a topping upgrade.</p>
+                </div>
+                <div class="flow-step fade-in">
+                    <div class="flow-number">03</div>
+                    <div class="flow-icon green-bg">🥣</div>
+                    <h3>Order & Pay</h3>
+                    <p>Choose your bowl, pay with tokens or lira. Token payments get 15% discount.</p>
+                </div>
+                <div class="flow-step fade-in">
+                    <div class="flow-number">04</div>
+                    <div class="flow-icon orange-bg">🎁</div>
+                    <h3>Earn Rewards</h3>
+                    <p>Every purchase earns tokens back. 5th bowl is free. Hold 500+ tokens = VIP member.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ECONOMICS -->
+    <section class="economics" id="economics">
+        <div class="container">
+            <span class="section-tag">Unit Economics</span>
+            <h2 class="section-title fade-in">The numbers work.</h2>
+            <p class="section-subtitle fade-in">Simple business, strong margins, token-powered growth.</p>
+            <div class="econ-grid">
+                <div class="econ-card fade-in">
+                    <h3>Revenue per bowl</h3>
+                    <div class="econ-row">
+                        <span class="econ-label">Average price</span>
+                        <span class="econ-value">₺350 ($9.50)</span>
+                    </div>
+                    <div class="econ-row">
+                        <span class="econ-label">Cost of goods</span>
+                        <span class="econ-value">₺70 ($1.90)</span>
+                    </div>
+                    <div class="econ-row">
+                        <span class="econ-label">Gross margin</span>
+                        <span class="econ-value green">80%</span>
+                    </div>
+                    <div class="econ-row">
+                        <span class="econ-label">Net margin</span>
+                        <span class="econ-value green">55%</span>
+                    </div>
+                </div>
+                <div class="econ-card fade-in">
+                    <h3>Monthly projections</h3>
+                    <div class="econ-row">
+                        <span class="econ-label">Bowls per day (peak)</span>
+                        <span class="econ-value">80-120</span>
+                    </div>
+                    <div class="econ-row">
+                        <span class="econ-label">Monthly revenue</span>
+                        <span class="econ-value">$8,500-12,000</span>
+                    </div>
+                    <div class="econ-row">
+                        <span class="econ-label">Token adoption target</span>
+                        <span class="econ-value accent">30% of payments</span>
+                    </div>
+                    <div class="econ-row">
+                        <span class="econ-label">Payback period</span>
+                        <span class="econ-value green">~45 days</span>
+                    </div>
+                </div>
+                <div class="econ-highlight fade-in">
+                    <div class="econ-highlight-item">
+                        <div class="big-number">$3-4K</div>
+                        <div class="label">Total investment</div>
+                    </div>
+                    <div class="econ-highlight-item">
+                        <div class="big-number">80%</div>
+                        <div class="label">Gross margin</div>
+                    </div>
+                    <div class="econ-highlight-item">
+                        <div class="big-number">45 days</div>
+                        <div class="label">To break even</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta" id="join">
+        <div class="container">
+            <div class="cta-card">
+                <span class="section-tag">Join the Demo</span>
+                <h2 class="section-title fade-in">Get your first tokens.<br>Try the bowl.</h2>
+                <p class="section-subtitle fade-in">Scan the QR at any partnered location or connect your Tonkeeper wallet to claim free welcome tokens.</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-white">Open Tonkeeper</a>
+                    <a href="index.html" class="btn btn-ghost">Learn About The Circle</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <span>© 2026 KAŞ BOWL — A demo project by The Circle</span>
+        <ul class="footer-links">
+            <li><a href="index.html">The Circle</a></li>
+            <li><a href="#">Telegram</a></li>
+            <li><a href="#">Tonkeeper</a></li>
+        </ul>
+    </footer>
+
+    <!-- BACK TO MAIN -->
+    <a href="index.html" class="back-link">← The Circle</a>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        window.addEventListener('scroll', () => {
+            document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        document.getElementById('menuToggle').addEventListener('click', () => {
+            document.getElementById('navLinks').classList.toggle('open');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('open');
+            });
+        });
+    </script>
+
+</body>
+</html>
